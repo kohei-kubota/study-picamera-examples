@@ -31,7 +31,7 @@ class FaceDetector(object):
     def get_frame(self):
         frame = self.flip_if_needed(self.vs.read())
         frame = self.process_image(frame)
-        ret, jpeg = cv2.imencode('.jpg', frame)
+        ret, jpeg = cv2.imencode('.jpg', frame)[1].tostring()
         return jpeg.tobytes()
 
     def process_image(self, frame):
